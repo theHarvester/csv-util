@@ -1,6 +1,6 @@
 <?php
 
-$phar = new Phar('comb.phar', 0, 'dist/csvutil.phar');
+$phar = new Phar('dist/csvutil.phar', 0);
 
 // start buffering. Mandatory to modify stub.
 $phar->startBuffering();

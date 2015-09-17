@@ -12,8 +12,7 @@ class AbstractCommand extends Command
     public function glob($path)
     {
         if(is_dir($path)){
-            $path = rtrim($path, "/");
-            return glob($path . "/**");
+            $path = rtrim($path, "/") . "/*";
         }
         return glob($path);
     }
