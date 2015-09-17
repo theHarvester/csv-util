@@ -8,10 +8,12 @@ if (! ini_get("auto_detect_line_endings")) {
 }
 
 use Symfony\Component\Console\Application;
+use TheHarvester\CsvUtil\Command\CommitToDbCommand;
 use TheHarvester\CsvUtil\Command\SummaryCommand;
 
 $console = new Application();
 
 $console->add(new SummaryCommand());
+$console->add(new CommitToDbCommand());
 
 $console->run();
