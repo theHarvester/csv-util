@@ -5,7 +5,7 @@ use TheHarvester\CsvUtil\Helper\OutputTable;
 
 /**
  * Class ColumnDetailAction
- * Gives a break down of the csv data
+ * Analyzes a csv and gives a break down of the data typs
  * @package TheHarvester\CsvUtil\Action
  */
 class ColumnSummary
@@ -27,6 +27,10 @@ class ColumnSummary
         $this->reader = $reader;
     }
 
+    /**
+     * Prepares the output table with columns and rows
+     * @return OutputTable
+     */
     public function prepareOutputTable()
     {
         $table = new OutputTable();
@@ -55,6 +59,10 @@ class ColumnSummary
         return $table;
     }
 
+    /**
+     * Analyizes the csv and gets a summary of the columns
+     * @return OutputTable
+     */
     public function getSummary()
     {
         $table = $this->prepareOutputTable();

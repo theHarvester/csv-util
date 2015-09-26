@@ -63,6 +63,7 @@ class OutputTable
     }
 
     /**
+     * Gets the row id from a row name. Alteratively a zero based id can be passed in and it will be returned
      * @param string|int $row_name Gets row id by row name or falls back to id if name can't be found
      * @return int
      * @throws NotFoundException
@@ -81,6 +82,7 @@ class OutputTable
     }
 
     /**
+     * Gets the column id from a column name. Alteratively a zero based id can be passed in and it will be returned
      * @param string|int $column_name Gets column id by row name or falls back to id if name can't be found
      * @return int
      * @throws NotFoundException
@@ -98,6 +100,13 @@ class OutputTable
         return $column_name;
     }
 
+    /**
+     * Gets the value of a cell
+     * @param int|string $row_name The row name of the row id
+     * @param int|string $column_name The column name or the column id
+     * @return null|mixed
+     * @throws NotFoundException
+     */
     public function getValue($row_name, $column_name)
     {
         $row_id = $this->getRowId($row_name);
@@ -112,6 +121,14 @@ class OutputTable
         return $this->data[$row_id][$column_id];
     }
 
+    /**
+     * Sets the value of a cell
+     * @param int|string $row_name The row name of the row id
+     * @param int|string $column_name The column name or the column id
+     * @param mixed $value
+     * @return $this
+     * @throws NotFoundException
+     */
     public function setValue($row_name, $column_name, $value)
     {
         $row_id = $this->getRowId($row_name);
@@ -129,11 +146,19 @@ class OutputTable
         return $this;
     }
 
+    /**
+     * Returns the currently stored data array as is, without key filling
+     * @return array[]
+     */
     public function getData()
     {
         return $this->data;
     }
 
+    /**
+     * Returns the data with empty cells filled with null
+     * @return array[]
+     */
     public function toArray()
     {
         $output = [];
