@@ -1,6 +1,5 @@
-<?php namespace CsvUtil\Tests\Helper;
+<?php namespace CsvUtil\Tests;
 
-use CsvUtil\Tests\TestCase;
 use TheHarvester\CsvUtil\Exception\NotFoundException;
 use TheHarvester\CsvUtil\Helper\OutputTable;
 

@@ -5,7 +5,7 @@ use TheHarvester\CsvUtil\Helper\OutputTable;
 
 /**
  * Class ColumnDetailAction
- * Gives a break down of what
+ * Gives a break down of the csv data
  * @package TheHarvester\CsvUtil\Action
  */
 class ColumnSummary
@@ -22,9 +22,9 @@ class ColumnSummary
     const IS_STRING_BOOL = 'String bool';
     const IS_EMPTY = 'Empty';
 
-    public function __construct($path)
+    public function __construct(Reader $reader)
     {
-        $this->reader = Reader::createFromPath($path);
+        $this->reader = $reader;
     }
 
     public function prepareOutputTable()
@@ -79,11 +79,11 @@ class ColumnSummary
                     $table->setValue($row_id, self::IS_NUMERIC_ONLY, false);
                 }
 
-                if ($value && ($value !== 0 || $value !== 1)) {
+                if (!in_array($value, ['0', '1'])) {
                     $table->setValue($row_id, self::IS_BINARY_ONLY, false);
                 }
 
-                if ($value && (strtolower($value) !== 'true' || strtolower($value) !== 'false')) {
+                if (!in_array(strtolower($value), ['true', 'false'])) {
                     $table->setValue($row_id, self::IS_STRING_BOOL, false);
                 }
 

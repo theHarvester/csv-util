@@ -30,7 +30,7 @@ class HeaderSummaryCommand extends AbstractCommand
         }
 
         foreach ($paths as $path) {
-            $detail = new ColumnSummary($path);
+            $detail = new ColumnSummary(Reader::createFromPath($path));
             $table = $detail->getSummary();
 
             $this->getHelper('table')
