@@ -98,12 +98,26 @@ class OutputTable
         return $column_name;
     }
 
+    public function getValue($row_name, $column_name)
+    {
+        $row_id = $this->getRowId($row_name);
+        $column_id = $this->getColumnId($column_name);
+
+        if (!isset($this->data[$row_id])) {
+            return null;
+        }
+        if (!isset($this->data[$row_id][$column_id])) {
+            return null;
+        }
+        return $this->data[$row_id][$column_id];
+    }
+
     public function setValue($row_name, $column_name, $value)
     {
         $row_id = $this->getRowId($row_name);
         $column_id = $this->getColumnId($column_name);
 
-        if(!isset($this->data[$row_id])){
+        if (!isset($this->data[$row_id])) {
             $this->data[$row_id] = [];
         }
         $this->data[$row_id][$column_id] = $value;
@@ -112,6 +126,7 @@ class OutputTable
         if ($column_id > $this->max_column_id) {
             $this->max_column_id = $column_id;
         }
+        return $this;
     }
 
     public function getData()
@@ -124,22 +139,18 @@ class OutputTable
         $output = [];
         $data = $this->data;
         // Fill the misssing rows with empty arrays
-        for($i = 0; $i < max(array_keys($data)); $i++)
-        {
-            if(!isset($data[$i]))
-            {
+        for ($i = 0; $i < max(array_keys($data)); $i++) {
+            if (!isset($data[$i])) {
                 $data[$i] = [];
             }
         }
         ksort($data);
 
         // loop the data and array fill the columns and then return
-        foreach($data as $row_id => $row_data){
+        foreach ($data as $row_id => $row_data) {
             // Fill the missing column values
-            for($i = 0; $i <= $this->max_column_id; $i++)
-            {
-                if(!isset($row_data[$i]))
-                {
+            for ($i = 0; $i <= $this->max_column_id; $i++) {
+                if (!isset($row_data[$i])) {
                     $row_data[$i] = null;
                 }
             }

@@ -5,7 +5,7 @@ use Symfony\Component\Console\Input\InputArgument;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Input\InputOption;
 use Symfony\Component\Console\Output\OutputInterface;
-use TheHarvester\CsvUtil\Action\ColumnDetailAction;
+use TheHarvester\CsvUtil\Action\ColumnSummary;
 use TheHarvester\CsvUtil\Action\HeaderInfoAction;
 use TheHarvester\CsvUtil\Helper\OutputTable;
 
@@ -14,7 +14,7 @@ class HeaderListCommand extends AbstractCommand
     protected function configure()
     {
         $this->setName('header:list')
-            ->setDescription('Prepares a summary of the csv(s).')
+            ->setDescription('Lists the header row of the csv(s).')
             ->addArgument(
                 'glob',
                 InputArgument::REQUIRED,
