@@ -59,7 +59,7 @@ class CommitToDbCommand extends AbstractCommand
         foreach ($paths as $path) {
             $colums = array_map(function($name){
                 return preg_replace("/[^a-zA-Z0-9]/", "_", $name);
-            },$header_action->execute($path));
+            },$header_action->toArray($path));
 
             $table_name = preg_replace("/[^a-zA-Z0-9]/", "_", basename($path));
             $output->writeln($table_name . " starting...");

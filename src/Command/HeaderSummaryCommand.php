@@ -1,5 +1,6 @@
 <?php namespace TheHarvester\CsvUtil\Command;
 
+use League\Csv\Reader;
 use Symfony\Component\Console\Input\InputArgument;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Input\InputOption;
@@ -7,7 +8,7 @@ use Symfony\Component\Console\Output\OutputInterface;
 use TheHarvester\CsvUtil\Action\ColumnDetailAction;
 use TheHarvester\CsvUtil\Action\HeaderInfoAction;
 
-class SummaryCommand extends AbstractCommand
+class HeaderSummaryCommand extends AbstractCommand
 {
     protected function configure()
     {
@@ -34,12 +35,12 @@ class SummaryCommand extends AbstractCommand
             return;
         }
 
-        $header_action = new HeaderInfoAction();
-        $header_names = [];
         foreach($paths as $path){
+            $header_action = new HeaderInfoAction(Reader::createFromPath($path));
+            $header_names = [];
             $header_names[$path] = array_map(function($header){
                 return [$header];
-            },$header_action->execute($path));
+            },$header_action->toArray($path));
 
             if($input->getOption("summary")){
                 $detail = new ColumnDetailAction();

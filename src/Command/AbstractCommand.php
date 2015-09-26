@@ -16,4 +16,10 @@ class AbstractCommand extends Command
         }
         return glob($path);
     }
+
+    public function getFileNameFromPath($path)
+    {
+        // TODO
+        return $path;
+    }
 }

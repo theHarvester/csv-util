@@ -9,11 +9,13 @@ if (! ini_get("auto_detect_line_endings")) {
 
 use Symfony\Component\Console\Application;
 use TheHarvester\CsvUtil\Command\CommitToDbCommand;
-use TheHarvester\CsvUtil\Command\SummaryCommand;
+use TheHarvester\CsvUtil\Command\HeaderListCommand;
+use TheHarvester\CsvUtil\Command\HeaderSummaryCommand;
 
 $console = new Application();
 
-$console->add(new SummaryCommand());
+$console->add(new HeaderListCommand());
+$console->add(new HeaderSummaryCommand());
 $console->add(new CommitToDbCommand());
 
 $console->run();
