@@ -20,6 +20,7 @@ class HeaderListCommand extends AbstractCommand
                 InputArgument::REQUIRED,
                 'The file path glob of the files to be summaried'
             );
+        $this->configureBase();
     }
 
     protected function execute(InputInterface $input, OutputInterface $output)
@@ -31,7 +32,7 @@ class HeaderListCommand extends AbstractCommand
         }
 
         foreach($paths as $path){
-            $names = Reader::createFromPath($path)->fetchOne();
+            $names = $this->getReader($input, $path)->fetchOne();
             $csv_name = $this->getFileNameFromPath($path);
             $output->writeln("<info>Column details for file: $csv_name</info>");
 

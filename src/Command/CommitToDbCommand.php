@@ -42,6 +42,8 @@ class CommitToDbCommand extends AbstractCommand
                 InputOption::VALUE_OPTIONAL,
                 'The password of the database connection. Defaults to (empty)'
             );
+
+        $this->configureBase();
     }
 
     protected function execute(InputInterface $input, OutputInterface $output)

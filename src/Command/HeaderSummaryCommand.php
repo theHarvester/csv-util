@@ -19,6 +19,7 @@ class HeaderSummaryCommand extends AbstractCommand
                 InputArgument::REQUIRED,
                 'The file path glob of the files to be summaried'
             );
+        $this->configureBase();
     }
 
     protected function execute(InputInterface $input, OutputInterface $output)
@@ -30,7 +31,7 @@ class HeaderSummaryCommand extends AbstractCommand
         }
 
         foreach ($paths as $path) {
-            $detail = new ColumnSummary(Reader::createFromPath($path));
+            $detail = new ColumnSummary($this->getReader($input, $path));
             $table = $detail->getSummary();
 
             $this->getHelper('table')
