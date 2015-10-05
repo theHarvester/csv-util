@@ -21,10 +21,10 @@ box build
 #
 git checkout gh-pages
 
-cp dist/csvutil.phar downloads/csvutil-${TAG}.phar
+cp csvutil.phar downloads/csvutil-${TAG}.phar
 git add downloads/csvutil-${TAG}.phar
 
-SHA1=$(openssl sha1 dist/csvutil.phar)
+SHA1=$(openssl sha1 csvutil.phar)
 
 JSON='name:"csvutil.phar"'
 JSON="${JSON},sha1:\"${SHA1}\""
