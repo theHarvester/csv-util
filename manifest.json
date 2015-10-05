@@ -1,6 +1,6 @@
 {
     "name": "csvutil.phar",
-    "sha1": "SHA1(csvutil.phar)= 618b5795a7ab1cf36613933df7bb5cc0d9d4760d",
-    "url": "http://theharvester.github.io/csv-util/downloads/csvutil-0.0.2.phar",
-    "version": "0.0.2"
+    "sha1": "SHA1(csvutil.phar)= 5f2278f9ea3d2e1b1462b4c6c6e81590b9cc2c97",
+    "url": "http://theharvester.github.io/csv-util/downloads/csvutil-0.0.3.phar",
+    "version": "0.0.3"
 }
