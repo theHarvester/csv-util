@@ -16,6 +16,7 @@ git checkout master
 git tag ${TAG}
 box build
 
+git add dist/csvutil.phar
 git commit -m "Bump version ${TAG}"
 git push
 
