@@ -17,7 +17,7 @@ class SelfUpdateCommand extends AbstractCommand
     protected function execute(InputInterface $input, OutputInterface $output)
     {
         $manager = new Manager(Manifest::loadFile(
-            'http://box-project.org/manifest.json'
+            'http://theharvester.github.io/csv-util/manifest.json'
         ));
 
         // update to the next available 1.x update
