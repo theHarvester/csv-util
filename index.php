@@ -14,7 +14,7 @@ use TheHarvester\CsvUtil\Command\HeaderSummaryCommand;
 use TheHarvester\CsvUtil\Command\PreviewCommand;
 use TheHarvester\CsvUtil\Command\SaveToMysqlCommand;
 
-$console = new Application();
+$console = new Application('CsvUtil', '@package_version@');
 
 $console->add(new HeaderListCommand());
 $console->add(new HeaderSummaryCommand());

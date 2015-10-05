@@ -2,6 +2,11 @@
 
 For full documentation visit [mkdocs.org](http://mkdocs.org).
 
+## Installation
+
+* 
+
+
 ## Commands
 
 * `mkdocs new [dir-name]` - Create a new project.
