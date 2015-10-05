@@ -56,6 +56,7 @@ git push origin master
 git checkout gh-pages
 git checkout master -- downloads
 git checkout master -- manifest.json
+git checkout master -- .gitignore
 git add -A
 git commit -m "Releasing version ${TAG}"
 git push origin gh-pages
