@@ -1,4 +1,0 @@
-# Ignore everything in this directory
-!csvutil.phar
-# Except this file
-!.gitignore

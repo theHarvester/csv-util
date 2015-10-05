@@ -16,6 +16,6 @@
   ],
   "git-version": "package_version",
   "main": "index.php",
-  "output": "dist/csvutil.phar",
+  "output": "csvutil.phar",
   "stub": true
 }
