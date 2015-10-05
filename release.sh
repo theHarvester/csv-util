@@ -16,6 +16,9 @@ git checkout master
 git tag ${TAG}
 box build
 
+git commit -m "Bump version ${TAG}"
+git push
+
 #
 # Copy executable file into GH pages
 #
