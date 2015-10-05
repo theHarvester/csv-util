@@ -10,8 +10,15 @@ fi
 TAG=$1
 
 #
+# Deploy the latest documentation
+#
+echo "Deploying documentation...\n"
+mkdocs gh-deploy
+
+#
 # Tag & build master branch
 #
+echo "Tagging build...\n"
 git checkout master
 git tag ${TAG}
 box build
@@ -19,6 +26,7 @@ box build
 #
 # Copy executable file into GH pages
 #
+echo "Moving everything into place...\n"
 git checkout gh-pages
 
 cp csvutil.phar downloads/csvutil-${TAG}.phar
@@ -36,6 +44,7 @@ JSON="${JSON},version:\"${TAG}\""
 #
 cat manifest.json | jsawk -a "this.push({${JSON}})" | python -mjson.tool > manifest.json.tmp
 mv manifest.json.tmp manifest.json
+echo "Committing and pushing...\n"
 git add manifest.json
 
 git commit -m "Bump version ${TAG}"
@@ -45,6 +54,7 @@ git commit -m "Bump version ${TAG}"
 #
 git checkout master
 
-echo "New version created. Now you should run:"
-echo "git push origin gh-pages"
-echo "git push ${TAG}"
+git push origin gh-pages
+git push --tags
+
+echo "New version ${TAG} created"
