@@ -1,1 +1,6 @@
-{}
+{
+    "name": "csvutil.phar",
+    "sha1": "SHA1(csvutil.phar)= 08b3f8d4970ccf3030cae48adb5d993c1a212ffa",
+    "url": "http://mattketmo.github.io/cliph/downloads/cliph-0.0.8.phar",
+    "version": "0.0.8"
+}
