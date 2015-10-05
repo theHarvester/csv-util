@@ -62,4 +62,7 @@ git commit -m "Releasing version ${TAG}"
 git push origin gh-pages
 git push --tags
 
+git checkout master
+composer install
+
 echo "New version ${TAG} created"
